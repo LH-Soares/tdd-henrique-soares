@@ -18,5 +18,13 @@ class ContaBancaria:
             raise ValueError("Saldo insuficiente para saque.")
         self.saldo -= valor
 
+    def consultar_saldo(self):
+        return self.saldo
 
-  
+    def transferir(self, conta_destino, valor):
+        if valor <= 0:
+            raise ValueError("O valor da transferência deve ser maior que zero.")
+        if valor > self.saldo:
+            raise ValueError("Saldo insuficiente para transferência.")
+        self.sacar(valor)
+        conta_destino.depositar(valor)
