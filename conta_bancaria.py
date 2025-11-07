@@ -7,11 +7,16 @@ class ContaBancaria:
             raise ValueError("O saldo inicial não pode ser negativo.")
     
     def depositar(self, valor):
-        """Deposita um valor na conta."""
         if valor <= 0:
             raise ValueError("O valor do depósito deve ser maior que zero.")
         self.saldo += valor
 
- 
+    def sacar(self, valor):
+        if valor <= 0:
+            raise ValueError("O valor do saque deve ser maior que zero.")
+        if valor > self.saldo:
+            raise ValueError("Saldo insuficiente para saque.")
+        self.saldo -= valor
+
 
   
